@@ -1,0 +1,103 @@
+Dim swApp As SldWorks.SldWorks
+Dim swModel As SldWorks.ModelDoc2
+
+Sub main()
+
+    ' Set SolidWorks application and active document
+    Set swApp = Application.SldWorks
+    Set swModel = swApp.ActiveDoc
+    
+    ' Define slicer path
+    Dim slicerPath As String
+    slicerPath = """C:\Program Files\Prusa3D\PrusaSlicer\prusa-slicer.exe"""
+    
+    ' Define export file extension
+    Dim exportExtension As String
+    exportExtension = "step" 'You can also use stl or 3MF
+
+    ' Declare variables
+    Dim swFeat As SldWorks.Feature
+    Dim swBodyFolder As SldWorks.BodyFolder
+    Dim swCustPropMgr As SldWorks.CustomPropertyManager
+    Dim swFeat2 As SldWorks.Feature
+    Dim Bodies As Variant
+    Dim swBody As SldWorks.Body2
+    Dim errors As Long
+    Dim warnings As Long
+    Dim noCLFlag As Boolean ' Flag to check if there is no cut list
+    Dim fName As String ' File name without extension
+
+    ' Initialize flag
+    noCLFlag = True
+
+    ' Get file name without extension
+    fName = GetFileNameWithoutExtension(swModel.GetPathName)
+
+    ' Loop through features
+    Set swFeat = swModel.FirstFeature
+    Do While Not swFeat Is Nothing
+        If swFeat.GetTypeName2 = "CutListFolder" Then
+            noCLFlag = False ' Cut list found
+            Set swBodyFolder = swFeat.GetSpecificFeature2
+            Set swCustPropMgr = swFeat.CustomPropertyManager
+            Dim BodyNameTag As String
+            Dim BodyName As String
+            BodyNameTag = "Description"
+            swCustPropMgr.Get4 BodyNameTag, False, "", BodyName
+            
+            ' Check if body name and count are valid
+            If Not BodyName = "" And swBodyFolder.GetBodyCount > 0 Then
+                Bodies = swBodyFolder.GetBodies
+                Set swBody = Bodies(0)
+                
+                ' Select and isolate body
+                swBody.Select False, 0
+                Set swFeat2 = swModel.FeatureManager.InsertDeleteBody2(True)
+                
+                ' Export file at body name
+                Dim savefName As String
+                savefName = GetFilePath(swModel.GetPathName) & BodyName & "." & exportExtension
+                swModel.Extension.SaveAs savefName, swSaveAsVersion_e.swSaveAsCurrentVersion, swSaveAsOptions_e.swSaveAsOptions_Silent, Nothing, errors, warnings
+                
+                ' Open the exported file in slicer
+                Shell slicerPath & " " & """" & savefName & """", vbNormalFocus
+                
+                swFeat2.Select False
+                
+                ' Delete the selected body
+                Dim DeleteOption As Long
+                Dim ModelDocExt As SldWorks.ModelDocExtension
+                Set ModelDocExt = swModel.Extension
+                DeleteOption = swDeleteSelectionOptions_e.swDelete_Absorbed
+                Dim status As Boolean
+                status = ModelDocExt.DeleteSelection2(DeleteOption)
+            End If
+        End If
+        Set swFeat = swFeat.GetNextFeature
+    Loop
+    
+    ' If there is no cut list, save without doing any body isolation
+    If noCLFlag Then
+        Dim SaveName As String
+        SaveName = GetFilePath(swModel.GetPathName) & fName & "." & exportExtension
+        swModel.Extension.SaveAs SaveName, swSaveAsVersion_e.swSaveAsCurrentVersion, swSaveAsOptions_e.swSaveAsOptions_Silent, Nothing, errors, warnings
+        
+        ' Open the exported file in slicer
+        Shell slicerPath & " " & """" & SaveName & """", vbNormalFocus
+        
+        MsgBox "Done"
+    End If
+
+End Sub
+
+' Function to get file name without extension
+Function GetFileNameWithoutExtension(ByVal fullPath As String) As String
+    Dim fName As String
+    fName = Right(fullPath, Len(fullPath) - InStrRev(fullPath, "\"))
+    GetFileNameWithoutExtension = Left(fName, InStrRev(fName, ".") - 1)
+End Function
+
+' Function to get file path without file name
+Function GetFilePath(ByVal fullPath As String) As String
+    GetFilePath = Left(fullPath, InStrRev(fullPath, "\"))
+End Function
