@@ -13,4 +13,25 @@ This eliminates the need for manual file conversion and import, saving you time 
 
 ![pipeline](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/e344b2b7-3fb5-48fd-8386-5155a5a96fbd)
 
+## How to install this macro / automation
+
+1.  Download the swp file and icon for your preferred slicer and save them in a folder for later use
+2.  Launch SolidWorks
+   
+3.  Create a new part
+   
+![Step3](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/92bfdf5e-7de9-47e6-92f2-45961d9b3131)
+
+
+
+4.  Open the Customize menue 
+   
+![Step4](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/48376620-6f19-4f50-b70c-d119f52bb275)
+
+    (open the dropdown menu next to the gear symbol and click on “Customize”)
+
+5. test
+
+
+
 
