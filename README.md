@@ -72,13 +72,15 @@ You will b  presented with a launched slicer with the part on the build plate.
 
 ## Customization
 
+The “Edit Macro” button allows you to customize the macro. The installation is identical to the first 5 steps in the installation chapter. Executing this button allows you to select swp file of the macro. Now you are able to alter the swp file. 
+
 ![C2b](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/376a2da5-2968-44f5-b2a9-12430e862692)
 
-The “Edit Macro” button allows you to customize the macro. The installation is identical to the first 5 steps in the installation chapter. Executing this button allows you to select swp file of the macro. Now you are able to alter the swp file. 
+The default slicer paths are utilized in the provided files. If necessary, modify the slicer path as needed. These files are currently formatted in STEP, per the recommendation of Bambu Labs [https://wiki.bambulab.com/en/software/bambu-studio/step]. However, you have the flexibility to convert them to STL, 3MF, or any other supported format if desired. 
+
 
 ![C3](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/28bb36a0-a935-40b5-bbc1-c328b52e3b91)
 
-The default slicer paths are utilized in the provided files. If necessary, modify the slicer path as needed. These files are currently formatted in STEP, per the recommendation of Bambu Labs [https://wiki.bambulab.com/en/software/bambu-studio/step]. However, you have the flexibility to convert them to STL, 3MF, or any other supported format if desired. 
 
 
 
