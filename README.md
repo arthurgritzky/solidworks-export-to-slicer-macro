@@ -30,7 +30,30 @@ This eliminates the need for manual file conversion and import, saving you time 
 
     (open the dropdown menu next to the gear symbol and click on “Customize”)
 
-5. test
+5. Get the macro button
+
+![Step5](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/32ef75ef-def1-42bb-9049-213aa5992c72)
+
+   (Go to category “Commands” and use the search for function to search for the “new macro button)
+
+6. Pin the button to the feature toolbar
+   
+![Step6](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/f5760a6f-dc5d-4dd2-9957-51312e076047)
+
+   (Drag the button onto the “Features Toolbar”)
+
+7. test
+
+
+
+   
+
+
+
+
+   
+
+   
 
 
 
