@@ -42,8 +42,18 @@ This eliminates the need for manual file conversion and import, saving you time 
 
    (Drag the button onto the “Features Toolbar”)
 
-7. test
+7. Customization of the macro button
 
+![Step7](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/a8d3c6ae-d677-406f-a1e3-23fc0dcfedf5)
+
+  (After pinning the button, the “Custamize Macro button" window should show up.  Click the button with the 3 dots and brows to the folder with the swp files of step one. Choose the file for the slicer of your choice. The button with the person an the arrow lets you       select the icon for the button. [Note: SW requires 16x16 pixel bmp files for the button icons])   
+
+8. Last step
+
+![Step8](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/02650a54-b540-44eb-a273-64ec0f7c6dc1)
+
+
+Press “OK” to save the button settings and you are done.
 
 
    
