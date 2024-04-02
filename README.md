@@ -56,6 +56,22 @@ This eliminates the need for manual file conversion and import, saving you time 
 Press “OK” to save the button settings and you are done.
 
 
+## Usage
+
+1. Open your part in Solidworks
+2. Press the button for the slicer of your coice
+
+You will b  presented with a launched slicer with the part on the build plate.
+
+![U1](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/8696071e-4180-4c69-ba70-0b3238f72589)
+
+![U2](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/0e3c349d-cf0d-4d23-b4af-e91ce6fb50c5)
+
+![U3](https://github.com/arthurgritzky/solidworks-export-to-slicer-macro/assets/89546471/76b7aa48-9095-4949-a82c-2391bf8f834f)
+
+
+
+
    
 
 
